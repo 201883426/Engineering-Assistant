@@ -1,5 +1,5 @@
-#ifndef RCALC_H
-#define RCALC_H
+#ifndef FUNCS_H
+#define FUNCS_H
 
 void start_rcalc();
 void start_adcdac();
