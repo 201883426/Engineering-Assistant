@@ -48,15 +48,20 @@ int find_color(char *name, ColorCode *out) {
 }
 
 // Continually ask for a valid colour until the user enters one
-void get_valid_colour(const char *prompt, ColorCode *out) {
+void get_valid_colour(const char *prompt, ColorCode *out, int allow) {
     char input[20];
     while (1) {
         type_write(prompt, 20);
         scanf("%19s", input);
         clear_input();
 
-        if (find_color(input, out))
+        if (find_color(input, out)){
+            if (!allow && out->value == -1) {
+                type_write(BOLD_YELLOW "Nah bro, Gold and Silver only work for Multiplier and Tolerance. Try again.\n" RESET, 20);
+                continue;
+            }
             return;
+        }
 
         type_write(BOLD_YELLOW "Whoa, never heard of that color. Check your spelling, man (and use 'grey', not 'gray').\n" RESET, 20);
     }
@@ -199,10 +204,10 @@ void start_colourcode() {
         // ------------------ 4 BAND ------------------
         if (bands == 4) {
 
-            get_valid_colour("Band 1 (1st digit): ", &b1);
-            get_valid_colour("Band 2 (2nd digit): ", &b2);
-            get_valid_colour("Band 3 (Multiplier): ", &mul);
-            get_valid_colour("Band 4 (Tolerance): ", &tol);
+            get_valid_colour("Band 1 (1st digit): ", &b1, 0);
+            get_valid_colour("Band 2 (2nd digit): ", &b2, 0);
+            get_valid_colour("Band 3 (Multiplier): ", &mul, 1);
+            get_valid_colour("Band 4 (Tolerance): ", &tol, 1);
 
             float resistance = (b1.value * 10 + b2.value) * mul.multiplier;
 
@@ -223,11 +228,11 @@ void start_colourcode() {
         // ------------------ 5 BAND ------------------
         else if (bands == 5) {
 
-            get_valid_colour("Band 1 (1st digit): ", &b1);
-            get_valid_colour("Band 2 (2nd digit): ", &b2);
-            get_valid_colour("Band 3 (3rd digit): ", &b3);
-            get_valid_colour("Band 4 (Multiplier): ", &mul);
-            get_valid_colour("Band 5 (Tolerance): ", &tol);
+            get_valid_colour("Band 1 (1st digit): ", &b1, 0);
+            get_valid_colour("Band 2 (2nd digit): ", &b2, 0);
+            get_valid_colour("Band 3 (3rd digit): ", &b3, 0);
+            get_valid_colour("Band 4 (Multiplier): ", &mul, 1);
+            get_valid_colour("Band 5 (Tolerance): ", &tol, 1);
 
             float resistance = (b1.value * 100 + b2.value * 10 + b3.value) * mul.multiplier;
 

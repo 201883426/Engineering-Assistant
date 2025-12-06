@@ -59,7 +59,7 @@ EngineeringAssistant/
 
 - __Typewriter Effect__: All text is printed one character at a time using ```type_write()```.
 
-- ___Robust Input Validation:__ This thing is built like a <span style="color:#ff1900ff">tank</span>. It uses custom ```get_int_input()``` and ```get_float_input()``` functions to catch and handle bad inputs (like ```abc``` instead of ```100``` or ```1.5``` when it expects ```2```). It won't crash (can't guarantee that actually 😁).
+- __Robust Input Validation:__ This thing is built like a <span style="color:#ff1900ff">tank</span>. It uses custom ```get_int_input()``` and ```get_float_input()``` functions to catch and handle bad inputs (like ```abc``` instead of ```100``` or ```1.5``` when it expects ```2```). It won't crash (can't guarantee that actually 😁).
 
 - __Modular Design:__ The project is cleanly separated into different ```.c``` and ```.h``` files for each feature (```rcalc.c```, ```adc_dac.c```, etc.), all managed by ```main.c```.
 
