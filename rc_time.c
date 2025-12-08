@@ -56,12 +56,18 @@ void start_rc(){
 
             // Time constant
             tau = R * C;
-            printf(BOLD_GREEN "\nSweet. Your time constant is %.6f seconds.\n" RESET, tau);
+            if (tau < 0.001 && tau > 0) {
+             printf(BOLD_GREEN "\nSweet. Your time constant is %.3e seconds.\n" RESET, tau);
+            } 
+            else {
+             printf(BOLD_GREEN "\nSweet. Your time constant is %.6f seconds.\n" RESET, tau);
+            }
+        
 
             // Time value
             while (1){
             t = get_float_input("Now, how long (t in seconds) are we waiting?: ");
-            if (t > 0) break;
+            if (t >= 0) break;
             type_write(BOLD_YELLOW "Time can't be negative, bro. Try again.\n" RESET, 20);
             }  
             
