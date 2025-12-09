@@ -61,7 +61,7 @@ int get_int_input(const char *prompt) {
         buf[strcspn(buf, "\n")] = '\0';     // Remove newline
 
         if (!is_integer(buf)) {
-            type_write(BOLD_YELLOW "Yo, gimme a real number.\n" RESET, 15);
+            type_write(BOLD_YELLOW "Yo, gimme a real number.\n" RESET, 10);
             continue;
         }
 
@@ -89,7 +89,7 @@ float get_float_input(const char *prompt)
         if (end != buf && *end == '\n' || *end == '\0')
             return f;                   // Valid number
 
-        type_write(BOLD_YELLOW "Not a number bro. Try again.\n" RESET, 20);
+        type_write(BOLD_YELLOW "Not a number bro. Try again.\n" RESET, 10);
     }
 }
 
@@ -103,17 +103,17 @@ int get_choice() {
     enum { MENU_ITEMS = 5 };   // 0..4 (0 = exit)
 
     do {
-        type_write("Please select an option: ", 20);
+        type_write("Please select an option: ", 10);
 
         if (!fgets(buf, sizeof(buf), stdin)) {
-            type_write("Input error. Exiting...\n", 20);
+            type_write("Input error. Exiting...\n", 10);
             exit(1);
         }
 
         buf[strcspn(buf, "\r\n")] = '\0';   // Remove newline
 
         if (!is_integer(buf)) {
-            type_write(BOLD_YELLOW "Yo, gimme a whole number, not that gobbledygook.\n" RESET, 20);
+            type_write(BOLD_YELLOW "Yo, gimme a whole number, not that gobbledygook.\n" RESET, 10);
             valid = 0;
             continue;
         }
@@ -124,7 +124,7 @@ int get_choice() {
         if (value >= 0 && value <= 4) {
             valid = 1;
         } else {
-            type_write(BOLD_YELLOW "That's not on the list, chief. Try again.\n" RESET, 20);
+            type_write(BOLD_YELLOW "That's not on the list, chief. Try again.\n" RESET, 10);
             valid = 0;
         }
 
@@ -160,7 +160,7 @@ int ask_run_again() {
     char choice[10];
 
     type_write("\n-------------------------------------------------\n", 3);
-    type_write("Aight, calculation done. Wanna run another? (yes/no): ", 20);
+    type_write("Aight, calculation done. Wanna run another? (yes/no): ", 10);
 
     while (1) {
         fgets(choice, sizeof(choice), stdin);
@@ -171,12 +171,12 @@ int ask_run_again() {
             return 1;   
 
         if (strcmp(choice, "no") == 0 || strcmp(choice, "back") == 0) {
-            type_write("Gotcha. Bouncin' back to the menu", 30);
+            type_write("Gotcha. Bouncin' back to the menu", 10);
             loading_dots(2000);
             return 0;   
         }
         // Invalid response
-        type_write(BOLD_YELLOW "Bro, it's a 'yes' or 'no' question: " RESET, 20);
+        type_write(BOLD_YELLOW "Bro, it's a 'yes' or 'no' question: " RESET, 10);
     }
 }
 

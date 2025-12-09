@@ -51,19 +51,19 @@ int find_color(char *name, ColorCode *out) {
 void get_valid_colour(const char *prompt, ColorCode *out, int allow) {
     char input[20];
     while (1) {
-        type_write(prompt, 20);
+        type_write(prompt, 10);
         scanf("%19s", input);
         clear_input();
 
         if (find_color(input, out)){
             if (!allow && out->value == -1) {
-                type_write(BOLD_YELLOW "Nah bro, Gold and Silver only work for Multiplier and Tolerance. Try again.\n" RESET, 20);
+                type_write(BOLD_YELLOW "Nah bro, Gold and Silver only work for Multiplier and Tolerance. Try again.\n" RESET, 10);
                 continue;
             }
             return;
         }
 
-        type_write(BOLD_YELLOW "Whoa, never heard of that color. Check your spelling, man (and use 'grey', not 'gray').\n" RESET, 20);
+        type_write(BOLD_YELLOW "Whoa, never heard of that color. Check your spelling, man (and use 'grey', not 'gray').\n" RESET, 10);
     }
 }
 
@@ -120,18 +120,18 @@ void start_colourcode() {
     ColorCode b1, b2, b3, mul, tol;
 
     // Intro animation
-    type_write("\nYo, let's crack this color code", 30);
-    loading_dots(2500);
+    type_write("\nYo, let's crack this color code", 10);
+    loading_dots(2000);
     printf("===================================================================\n");
-    type_write(BOLD_PURPLE "       R E S I S T O R  C O L O U R  C O D E  D E C O D E R\n" RESET,20);
+    type_write(BOLD_PURPLE "       R E S I S T O R  C O L O U R  C O D E  D E C O D E R\n" RESET,10);
     printf("===================================================================\n");
 
     // Ask user if they understand colour bands
-    type_write("First up, you know the deal with these color bands? (yes/no)\n", 20);
-    type_write("You can also type 'back' to bail:", 20);
+    type_write("First up, you know the deal with these color bands? (yes/no)\n", 10);
+    type_write("You can also type 'back' to bail:", 10);
     while (1){
         if (scanf("%9s", exp) != 1) {
-            type_write(BOLD_RED "Input error, man. Bailing.\n" RESET, 20);
+            type_write(BOLD_RED "Input error, man. Bailing.\n" RESET, 10);
             return;
         }
         clear_input();
@@ -139,43 +139,43 @@ void start_colourcode() {
 
         if (strcmp(exp, "no") == 0) {
             // Full explanation if user doesn't know
-            type_write("\nAll good, bro. Here's the lowdown:\n\n", 20);
-            
-            type_write("Resistor Colour Code Basics\n", 20);
-            type_write("----------------------------------\n", 20);
-            type_write("A resistor has coloured bands that represent numbers.\n", 20);
-            type_write("The first 2 or 3 bands = digits of the resistance value.\n", 20);
-            type_write("The next band = multiplier (how many zeros).\n", 20);
-            type_write("The last band = tolerance (accuracy).\n\n", 20);
+            type_write("\nAll good, bro. Here's the lowdown:\n\n", 10);
+            type_write("----------------------------------------------------\n", 10);
+            type_write(" R E S I S T O R  C O L O U R  C O D E  B A S I C S\n", 10);
+            type_write("----------------------------------------------------\n", 10);
+            type_write("A resistor has coloured bands that represent numbers.\n", 10);
+            type_write("The first 2 or 3 bands = digits of the resistance value.\n", 10);
+            type_write("The next band = multiplier (how many zeros).\n", 10);
+            type_write("The last band = tolerance (accuracy).\n\n", 10);
 
-            type_write("  4-Band Resistor:\n", 20);
-            type_write("  Band 1 -> 1st digit\n", 20);
-            type_write("  Band 2 -> 2nd digit\n", 20);
-            type_write("  Band 3 -> multiplier (x10, x100, etc.)\n", 20);
-            type_write("  Band 4 -> tolerance (% error)\n\n", 20);
+            type_write("  4-Band Resistor:\n", 10);
+            type_write("  Band 1 -> 1st digit\n", 10);
+            type_write("  Band 2 -> 2nd digit\n", 10);
+            type_write("  Band 3 -> multiplier (x10, x100, etc.)\n", 10);
+            type_write("  Band 4 -> tolerance (% error)\n\n", 10);
 
-            type_write("  5-Band Resistor:\n", 20);
-            type_write("  Band 1 -> 1st digit\n", 20);
-            type_write("  Band 2 -> 2nd digit\n", 20);
-            type_write("  Band 3 -> 3rd digit\n", 20);
-            type_write("  Band 4 -> multiplier\n", 20);
-            type_write("  Band 5 -> tolerance\n\n", 20);
+            type_write("  5-Band Resistor:\n", 10);
+            type_write("  Band 1 -> 1st digit\n", 10);
+            type_write("  Band 2 -> 2nd digit\n", 10);
+            type_write("  Band 3 -> 3rd digit\n", 10);
+            type_write("  Band 4 -> multiplier\n", 10);
+            type_write("  Band 5 -> tolerance\n\n", 10);
 
-            type_write("Aight, now you just type in your colors.\n\n", 20);
+            type_write("Aight, now you just type in your colors.\n\n", 10);
             break;
 
         } 
         else if (strcmp(exp, "yes") == 0) {
-            type_write("\nSweet. You know what's up. Let's do this\n\n", 20);
+            type_write("\nSweet. You know what's up. Let's do this\n\n", 10);
             break;
         }
         else if (strcmp(exp, "back") == 0) {
-            type_write("Gotcha. Bouncin' back", 20);
+            type_write("Gotcha. Bouncin' back", 10);
             loading_dots(2000);
             return;
         }
         else {
-            type_write(BOLD_YELLOW "\nNah, just type 'yes', 'no' or 'back':" RESET, 20);
+            type_write(BOLD_YELLOW "\nNah, just type 'yes', 'no' or 'back':" RESET, 10);
         }
     }
     
@@ -186,20 +186,20 @@ void start_colourcode() {
             bands  = get_int_input("So, we lookin' at a 4 or 5 band resistor? (or 0 to bail):");
 
             if (bands == 0) {
-                type_write("Aight, bouncin' back", 30);
+                type_write("Aight, bouncin' back", 10);
                 loading_dots(2000);
                 return;
             }
 
             if (bands != 4 && bands != 5) {
-                type_write(BOLD_YELLOW "Whoa, I only do 4 or 5 band, man. Try again.\n" RESET, 20);
+                type_write(BOLD_YELLOW "Whoa, I only do 4 or 5 band, man. Try again.\n" RESET, 10);
                 continue;
             }
             break;
         }
 
-        type_write("\nCool. Let's crack this code.\n", 25);
-        type_write("Gimme the colors, one by one.\n\n", 25);
+        type_write("\nCool. Let's crack this code.\n", 15);
+        type_write("Gimme the colors, one by one.\n\n", 15);
         
         // ------------------ 4 BAND ------------------
         if (bands == 4) {
@@ -211,7 +211,7 @@ void start_colourcode() {
 
             float resistance = (b1.value * 10 + b2.value) * mul.multiplier;
 
-            type_write("\nFigurin' it out", 25);
+            type_write("\nFigurin' it out", 10);
             loading_dots(2000);
             print_resistor_preview_4(b1, b2, mul, tol);
 
@@ -236,7 +236,7 @@ void start_colourcode() {
 
             float resistance = (b1.value * 100 + b2.value * 10 + b3.value) * mul.multiplier;
 
-            type_write("\nFigurin' it out", 25);
+            type_write("\nFigurin' it out", 10);
             loading_dots(2000);
             print_resistor_preview_5(b1, b2, b3, mul, tol);
 

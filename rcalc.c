@@ -14,21 +14,21 @@ void start_rcalc() {
         float total = 0;            // Final calculated resistance
 
         // Intro animation
-        type_write("\nAight, firing up the Resistance Calculator", 30);
-        loading_dots(3000);
+        type_write("\nAight, firing up the Resistance Calculator", 10);
+        loading_dots(2000);
 
         printf("===================================================================\n");
-        type_write(BOLD_GREEN"             R E S I S T A N C E  C A L C U L A T O R\n" RESET,20);
+        type_write(BOLD_GREEN"             R E S I S T A N C E  C A L C U L A T O R\n" RESET,10);
         printf("===================================================================\n");
 
         while (1){
         // Ask user for circuit type
-        type_write("Aight, you got these resistors in 'series' or 'parallel'?\n", 20);
-        type_write("(Hit 'back' if you wanna bail)\n", 20);
+        type_write("Aight, you got these resistors in 'series' or 'parallel'?\n", 10);
+        type_write("(Hit 'back' if you wanna bail)\n", 10);
 
         // Loop until valid word is given
         while (1) {
-        type_write("Gimme the word: ", 20);
+        type_write("Gimme the word: ", 10);
 
         fgets(type, 19, stdin);
         type[strcspn(type, "\n")] = '\0';   // Strip newline
@@ -37,7 +37,7 @@ void start_rcalc() {
         
         // Allow returning to menu
         if (strcmp(type, "back") == 0) {
-            type_write("Gotcha. Bouncin' back to the menu", 20);
+            type_write("Gotcha. Bouncin' back to the menu", 10);
             loading_dots(2000);
             return;
         }
@@ -46,18 +46,18 @@ void start_rcalc() {
         if (strcmp(type, "series") == 0 || strcmp(type, "parallel") == 0) {
             break;
         }
-        type_write(BOLD_YELLOW "Bro, I didn't get that. Just type 'series', 'parallel', or 'back'.\n" RESET, 20);
+        type_write(BOLD_YELLOW "Bro, I didn't get that. Just type 'series', 'parallel', or 'back'.\n" RESET, 10);
     }
 
         // Ask how many resistors
-        type_write("Cool. How many resistors we talkin' for this ", 20);
+        type_write("Cool. How many resistors we talkin' for this ", 10);
         type_write(type, 30);
         type_write(" circuit?\n", 30);
         
         while (1) {
             n = get_int_input("Enter number: ");
             if (n <= 0) {
-                type_write(BOLD_YELLOW "Nah bro, need at least 1 resistor.\n" RESET, 20);
+                type_write(BOLD_YELLOW "Nah bro, need at least 1 resistor.\n" RESET, 10);
                 continue;
             }
             break;
@@ -77,7 +77,7 @@ void start_rcalc() {
             printf("                                                    \n");
             printf("  IN ---[ R1 ]----[ R2 ]----[ R3 ]----[ R... ]--- OUT\n");
             printf("====================================================\n");
-            type_write("Alright, hit me with the (ohm) values for each one.\n", 20);
+            type_write("Alright, hit me with the (ohm) values for each one.\n", 10);
 
             // Collect resistor values
             for (int i = 1; i <= n; i++) {
@@ -86,7 +86,7 @@ void start_rcalc() {
                         sprintf(prompt, "Value for Resistor %d (in ohms): ", i);
                         value = get_float_input(prompt);
                         if (value < 0) {
-                            type_write(BOLD_RED "\n Whoa, bro. Can't have negative ohms. That ain't real.\n" RESET,20);
+                            type_write(BOLD_RED "\n Whoa, bro. Can't have negative ohms. That ain't real.\n" RESET,10);
                             Sleep(2000);
                         } 
                         else {
@@ -97,8 +97,8 @@ void start_rcalc() {
             }
 
             // Output calculating animation
-            type_write("Crunchin' the numbers", 30);
-            loading_dots(3000);
+            type_write("Crunchin' the numbers", 10);
+            loading_dots(2000);
 
             // Fun sound effects
             Beep(800, 100);
@@ -123,7 +123,7 @@ void start_rcalc() {
             printf("                 +----[ R... ]---+                   \n");
             printf("                                                    \n");
             printf("====================================================\n");
-            type_write("Alright, hit me with the (ohm) values for each one.\n", 20);
+            type_write("Alright, hit me with the (ohm) values for each one.\n", 10);
             for (int i = 1; i <= n; i++) {
                 while (1){
                     char prompt[64];
@@ -132,12 +132,10 @@ void start_rcalc() {
 
                     // Validate resistor value
                     if (value == 0) {
-                        type_write(BOLD_RED "\nYo, hold up! Can't use 0 in parallel, man. It breaks math (division-by-zero).\n" RESET,20);
-                        Sleep(2000);
+                        type_write(BOLD_RED "\nYo, hold up! Can't use 0 in parallel, man. It breaks math (division-by-zero).\n" RESET,10);
                         continue;
                     } else if (value < 0){
-                        type_write(BOLD_RED "\n Whoa, bro. Can't have negative ohms. That ain't real.\n" RESET,20);
-                        Sleep(2000);
+                        type_write(BOLD_RED "\n Whoa, bro. Can't have negative ohms. That ain't real.\n" RESET,10);
                     } else {
                         break;
                     }
@@ -148,8 +146,8 @@ void start_rcalc() {
             // Final parallel resistance
             total = 1.0f / reciprocal_sum;
 
-            type_write("Crunchin' the numbers", 30);
-            loading_dots(3000);
+            type_write("Crunchin' the numbers", 10);
+            loading_dots(2000);
 
             Beep(800, 100);
             Beep(1000, 100);
