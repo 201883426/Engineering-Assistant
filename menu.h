@@ -1,3 +1,6 @@
+// menu.h
+// Declares functions and constants shared across all Engineering Assistant modules.
+
 #ifndef MENU_H
 #define MENU_H
 

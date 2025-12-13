@@ -1,3 +1,7 @@
+// menu.c
+// Displays the main menu and handles navigation
+// Includes all user interface functionality for the Engineering Assistant.
+
 #include <stdio.h>
 #include <windows.h>
 #include <ctype.h>

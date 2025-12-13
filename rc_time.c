@@ -1,3 +1,7 @@
+// rc_time.c
+// Entry function for the RC Time Constant Calculator
+// Implements RC time constant calculations for charging and discharging RC circuits.
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>

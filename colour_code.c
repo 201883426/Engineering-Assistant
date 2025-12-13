@@ -1,14 +1,13 @@
+// colour_code.c
+// Implements a resistor colour code decoder supporting both 4-band and 5-band resistors
+// Resistance and tolerance calculation
+// ANSI-based visual resistor preview
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 #include <windows.h>
 #include "menu.h"
-
-// Structure representing a single resistor colour entry
-// value -> digit value for the colour
-// multiplier -> what the colour multiplies the value by
-// tolerance -> percentage tolerance of the band
-// ansi -> terminal ANSI background colour code
 
 typedef struct {
     char color[12];
@@ -18,7 +17,7 @@ typedef struct {
     int ansi;
 } ColorCode;
 
-// Full colour lookup table (digit, multiplier, tolerance data)
+// Full colour lookup table (colour, digit, multiplier, tolerance, ANSI colour code)
 ColorCode table[] = {
     {"black", 0, 1, -1, 0},
     {"brown", 1, 10, 1, 94},

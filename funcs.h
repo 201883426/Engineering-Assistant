@@ -1,3 +1,6 @@
+// funcs.h
+// Declares entry-point functions for each major functional module in the Engineering Assistant.
+
 #ifndef FUNCS_H
 #define FUNCS_H
 

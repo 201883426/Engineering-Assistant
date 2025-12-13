@@ -19,10 +19,10 @@ EngineeringAssistant/
 ├── colour_code.c       # Resistor colour code decoder (4 and 5-band)
 ├── rc_time.c           # RC time constant calculator (charging/discharging)
 ├── adc_dac.c           # ADC/DAC converter
-├── menu.h              # Menu system prototypes 
-├── funcs.h             # 
+├── menu.h              # Menu and UI utilities
+├── funcs.h             # Application module entry points
 │
-└── README.md
+└── README.md           # Project overview, build & usage instructions
 ```
 ## 🔥 Features
 ### 1. Resistor Calculator (Series/Parallel)

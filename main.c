@@ -1,10 +1,11 @@
+// main.c
+// Entry point of the Engineering Assistant program.
+// Displays menu, gets user choice, and switches to the requested feature.
+
 #include <stdio.h>
 #include <windows.h>
 #include "menu.h"
 #include "funcs.h"
-
-// Entry point of the Engineering Assistant program.
-// Displays menu, gets user choice, and switches to the requested feature.
 
 int main() {
     int choice;

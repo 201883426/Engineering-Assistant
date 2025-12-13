@@ -1,3 +1,9 @@
+// adc_dac.c
+// Entry function for Analog-to-Digital (ADC) and Digital-to-Analog (DAC) conversion calculator
+// ADC code calculation and binary representation 
+// DAC output voltage computation
+// Quantisation step size
+
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>

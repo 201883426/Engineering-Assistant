@@ -1,10 +1,13 @@
+// rcalc.c
+// Entry function for the Resistance Calculator
+// Supports calculation of equivalent resistance for series and parallel resistor networks
+
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 #include <windows.h>
 #include "menu.h"
 
-// Entry function for the Resistance Calculator
 void start_rcalc() {   
         char type[20];              // Stores user input: "series" / "parallel"
         int n;                      // Number of resistors
