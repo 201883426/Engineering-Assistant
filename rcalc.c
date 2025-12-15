@@ -162,4 +162,3 @@ void start_rcalc() {
         if (!ask_run_again()) return;
     }
 }
-

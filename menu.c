@@ -183,4 +183,3 @@ int ask_run_again() {
         type_write(BOLD_YELLOW "Bro, it's a 'yes' or 'no' question: " RESET, 10);
     }
 }
-
