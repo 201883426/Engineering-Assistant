@@ -46,7 +46,7 @@ int find_color(char *name, ColorCode *out) {
     return 0;
 }
 
-// Continually ask for a valid colour until the user enters one
+// Continuously ask for a valid colour until the user enters one
 void get_valid_colour(const char *prompt, ColorCode *out, int allow) {
     char input[20];
     while (1) {
